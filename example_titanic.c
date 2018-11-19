@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 
     /* Reading in the training dataset !!!CHANGE PATH!!! */
     /* The data was already cleaned and scaled in python */
-    FILE* titanic_data = fopen("C:\\Users\\imets\\Projects\\TinY ANN\\data\\titanic_data.csv", "r");
+    FILE* titanic_data = fopen("YOUR_PATH\\data\\titanic_data.csv", "r");
     read_csv(titanic_data, X_train, X_test, y_train, y_test, train_dim, test_dim);
 
     /* Scaling the data */
