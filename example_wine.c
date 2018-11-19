@@ -32,7 +32,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
 
 
 int main(int argc, char **argv) {
@@ -94,6 +93,5 @@ int main(int argc, char **argv) {
     free_float_2d(y_test, test_dim.h);
     free_net(ann);
 
-    debugmalloc_dump();
     return 0;
 }
