@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 
     /* Reading in the training dataset !!!CHANGE PATH!!! */
     /* The data was already cleaned and scaled in python */
-    FILE* wine_data = fopen("C:\\Users\\imets\\Projects\\TinY ANN\\data\\wine_data.csv", "r");
+    FILE* wine_data = fopen("YOUR_PATH\\TinY ANN\\data\\wine_data.csv", "r");
     if (wine_data == NULL)
         end();
 
