@@ -7,7 +7,12 @@ to make it easier to implement neural networks on Arduinos and in C language for
 
 ## Example Codes
 
-There are 6 example codes in this library
+There are 6 example codes in this library.
+
+![alt text](https://github.com/Imetomi/TinY-ANN/blob/master/img/plot.png)
+
+
+![alt text](https://github.com/Imetomi/TinY-ANN/blob/master/img/gallery_plot.png)
 
 
 
