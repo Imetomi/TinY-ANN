@@ -2,13 +2,13 @@
 
 # Artificial Neural Network Library in C
 
-TinY ANN is a simple library to create neural networks in C for smaller data science projects. You can use this library to implement neural networks on Arduinos (maybe other embedded systems too) or to make complete data science projects in C. The repository and the library contains the most important data managing and feature scaling algorithms too. It is very easy to use, it can tackle the majority of data science challanges. 
+TinY ANN is a simple library to create neural networks in C for smaller data science projects. You can use this library to implement neural networks on Arduinos (maybe other embedded systems too) or to make complete data science projects in C. The repository and the library contains the most important data managing and feature scaling algorithms too. It is very easy to use and can tackle the majority of data science challanges. 
 
 ## 1. Setting up TinY ANN
 
 All you have to do is to add `perceptron.h`, `perceptron.c`, `perceptron_libs.c`, and `perceptron_plotter.c` to your project then include the header file. 
 
-**NOTE: 'perceptron_plotter.c' uses SDL2 library to make graphical visualizations. If don't want to use the graphical tools then simply remove every related function and file. I have marked these in the code, feel free to modify it.**
+**NOTE: `perceptron_plotter.c` uses SDL2 library to make graphical visualizations. If don't want to use the graphical tools then simply remove every related function and file. I have marked these in the code, feel free to modify it.**
 
 ## Example Codes
 
@@ -18,7 +18,14 @@ There are 6 example codes in this repository. These examples show you how to use
 
 ### Grahical Visualization using SDL2
 
-You'll need to have SDL2 in order to try out these example codes. The library creates you a canvas on which you can draw whatever you want. There are some premade fuctions that help you to create good looking visualizations on the accuracy or error loss values. The library also contains functions that plot the training dataset on the canvas and visualize what the network learned. 
+You'll need to have SDL2 in order to try out these example codes. The library creates you a canvas on which you can draw whatever you want. There are some premade fuctions that help you to create good looking visualizations on the accuracy or error loss values. The library also contains functions that plot the training dataset on the canvas and visualize what the network learned.
+
+There are some random dataset generating algorithms implemented in the library. You can use these for testing.
+
+-`example_circle.c`	Creates two circle datasets and learns to classify the inner and the outer circle.
+-`example_linear.c`	Creates two linearly separable datasets and learns to classify them.
+-`example_check.c`	Creates a check table pattern and learns to classify the elements in it.
+-`example_spiral.c`	Creates an Archimedean spiral and learns to classify the two rolls. 
 
 ![alt text](https://github.com/Imetomi/TinY-ANN/blob/master/img/plot.png)
 	
@@ -36,7 +43,7 @@ This example shows how to use the `read_csv()` and `standard_scaler()` functions
 
 ### Red Wine Dataset
 
-The `example_wine.c` example code tackles another very popular machine learning problem. In this case the problem learns to classify good and bad red wines based on what chemicals do they contain. 
+The `example_wine.c` example code tackles another very popular machine learning problem. In this case the neural network learns to classify good and bad red wines based on what chemicals do they contain.
 
 ## Usage
 
