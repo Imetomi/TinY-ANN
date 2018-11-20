@@ -60,10 +60,10 @@ int main() {
     Dim test_dim = {100, 8}; //testing_data dimension
 
     /* defining dataset */
-    float **X_train = allocate_float_2d(train_dim.h, train_dim.w)
-    float **X_test = allocate_float_2d(train_dim.h, train_dim.w)
-    float **y_train = allocate_float_2d(train_dim.h, 1)
-    float **y_test = allocate_float_2d(test_dim.h, 1)
+    float **X_train = allocate_float_2d(train_dim.h, train_dim.w);
+    float **X_test = allocate_float_2d(train_dim.h, train_dim.w);
+    float **y_train = allocate_float_2d(train_dim.h, 1);
+    float **y_test = allocate_float_2d(test_dim.h, 1);
     /* for now we assume that you also fill these up with some useful information. */
 
     Dim in = {8, 5}; //first layer: 8 input neurons and 5 neurons in the hidden layer
