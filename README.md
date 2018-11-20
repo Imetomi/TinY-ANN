@@ -54,8 +54,8 @@ It is relatively easy to use this library in C, just don't forget to free up the
 #include "perceptron.h"
 
 int main() {
-	int n_epoch = 200; //number of learning epochs
-	float eta = 0.09; //learnig rate
+int n_epoch = 200; //number of learning epochs
+float eta = 0.09; //learnig rate
     Dim train_dim = {500, 8}; //training data dimension
     Dim test_dim = {100, 8}; //testing_data dimension
 
@@ -66,7 +66,7 @@ int main() {
     float **y_test = allocate_float_2d(test_dim.h, 1)
     /* for now we assume that you also fill these up with some useful information. */
 
-	Dim in = {8, 5}; //first layer: 8 input neurons and 5 neurons in the hidden layer
+Dim in = {8, 5}; //first layer: 8 input neurons and 5 neurons in the hidden layer
     Dim out = {5, 1}; //second layer: 5 neurons in the hidden layer and 1 output neuron
 
     /* creating the neural net */
