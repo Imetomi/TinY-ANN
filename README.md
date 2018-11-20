@@ -47,7 +47,7 @@ The `example_wine.c` example code tackles another very popular machine learning 
 
 ## Usage
 
-It is very easy to use this library in C. The hard job is done by the prewritten functions, you only have to deal with creating and training the network.
+It is relatively easy to use this library in C, just don't forget to free up the allocated memory. The hard job is done by the prewritten functions, you only have to deal with creating and training the network.
 
 
 ```C
