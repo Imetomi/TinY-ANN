@@ -6,9 +6,9 @@ TinY ANN is a simple library to create neural networks in C for smaller data sci
 
 ## 1. Setting up TinY ANN
 
-All you have to do is to add 'perceptron.h', 'perceptron.c', 'perceptron_libs.c', and 'perceptron_plotter.c' to your project then include the header file. 
+All you have to do is to add `perceptron.h`, `perceptron.c`, `perceptron_libs.c`, and `perceptron_plotter.c` to your project then include the header file. 
 
-*NOTE: 'perceptron_plotter.c' uses SDL2 library to make graphical visualizations. If don't want to use the graphical tools then simply remove every related function and file. I have marked these in the code, feel free to modify it.*
+**NOTE: 'perceptron_plotter.c' uses SDL2 library to make graphical visualizations. If don't want to use the graphical tools then simply remove every related function and file. I have marked these in the code, feel free to modify it.**
 
 ## Example Codes
 
@@ -32,18 +32,18 @@ On the image below you can see some of the most beautiful plots. The dots mark t
 
 ### Kaggle Titanic Dataset
 
-This example shows how to use the 'read_csv()' and 'standard_scaler()' functions. Using a 3 layer (17-4-1) network I was able to get 92% accuracy. Note: the input data was cleaned in Jupyter.
+This example shows how to use the `read_csv()` and `standard_scaler()` functions. Using a 3 layer (17-4-1) network I was able to get about 92% accuracy. To try out this example compile `example_titanic.c`. Note: the input data was cleaned in Jupyter. 
 
 ### Red Wine Dataset
 
-The 'example_wine.c' example code tackles another very popular machine learning problem. In this case the problem learns to classify good and bad red wines based on what chemicals do they contain. 
+The `example_wine.c` example code tackles another very popular machine learning problem. In this case the problem learns to classify good and bad red wines based on what chemicals do they contain. 
 
 ## Usage
 
 It is very easy to use this library in C. The hard job is done by the prewritten functions, you only have to deal with creating and training the network.
 
 
-'''C
+```C
 	#include "perceptron.h"
 
 	int main() {
@@ -82,7 +82,7 @@ It is very easy to use this library in C. The hard job is done by the prewritten
 
 	    return 0;
 	}
-'''C
+```C
 
 
 
