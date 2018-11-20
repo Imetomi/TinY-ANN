@@ -2,7 +2,7 @@
 
 # Artificial Neural Network Library in C
 
-TinY ANN is a simple library to create neural networks in C for smaller data science projects. You can use this library to implement neural networks on Arduinos (maybe other embedded systems too) or to make complete data science projects in C. The repository and the library contains the most important data managing and feature scaling algorithms too. It is very easy to use and can tackle the majority of data science challanges. 
+TinY ANN is a simple library to create neural networks in C for smaller data science projects. You can use this library to implement neural networks on Arduinos (maybe other embedded systems too) or to make complete data science projects in C. The repository and the library contains the most important data managing and feature scaling algorithms too. The prewritten functions do all the hard job so it feels like creating an ANN in Python.
 
 ## Setting up TinY ANN
 
