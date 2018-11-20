@@ -22,10 +22,10 @@ You'll need to have SDL2 in order to try out these example codes. The library cr
 
 There are some random dataset generating algorithms implemented in the library. You can use these for testing.
 
--`example_circle.c`	Creates two circle datasets and learns to classify the inner and the outer circle.
--`example_linear.c`	Creates two linearly separable datasets and learns to classify them.
--`example_check.c`	Creates a check table pattern and learns to classify the elements in it.
--`example_spiral.c`	Creates an Archimedean spiral and learns to classify the two rolls. 
+- `example_circle.c`	Creates two circle datasets and learns to classify the inner and the outer circle.
+- `example_linear.c`	Creates two linearly separable datasets and learns to classify them.
+- `example_check.c`		Creates a check table pattern and learns to classify the elements in it.
+- `example_spiral.c`	Creates an Archimedean spiral and learns to classify the two rolls. 
 
 ![alt text](https://github.com/Imetomi/TinY-ANN/blob/master/img/plot.png)
 	
