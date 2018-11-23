@@ -35,7 +35,7 @@ On the image below you can see some of the most beautiful plots. The dots mark t
 
 ![alt text](https://github.com/Imetomi/TinY-ANN/blob/master/img/plot_gallery.png)
 
-### Tackleing Data Science Projects
+### Tackling Data Science Projects
 
 #### Kaggle Titanic Dataset
 
@@ -43,7 +43,7 @@ This example shows how to use the `read_csv()` and `standard_scaler()` functions
 
 #### Red Wine Dataset
 
-The `example_wine.c` example code tackles another very popular machine learning problem. In this case the neural network learns to classify good and bad red wines based on what chemicals do they contain.
+The `example_wine.c` example code tackles another very popular machine learning problem. In this case the neural network learns to classify good and bad red wines based on what chemicals they contain.
 
 ## Usage
 
