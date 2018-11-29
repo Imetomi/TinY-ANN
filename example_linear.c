@@ -10,6 +10,7 @@
  */
 
 #include "perceptron.h"
+#include "debugmalloc.h"
 
 
 int main(int argc, char **argv) {
@@ -75,5 +76,6 @@ int main(int argc, char **argv) {
 
 
     /* Terminate program */
+    debugmalloc_dump();
     return 0;
 }

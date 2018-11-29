@@ -12,10 +12,9 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
-
 
 int main(int argc, char **argv) {
+
     srand(time(NULL));
     SDL_Renderer *renderer;
     SDL_Window *window;
@@ -83,6 +82,5 @@ int main(int argc, char **argv) {
 
 
     /* Terminate program */
-    debugmalloc_dump();
     return 0;
 }

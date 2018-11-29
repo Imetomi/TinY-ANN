@@ -1,10 +1,13 @@
+#ifndef PERCEPTRON_H_INCLUDED
+#define PERCEPTRON_H_INCLUDED
+
 /*
  * Description: this library contains functions that help you to create
  * artificial neural networks in C language. You can use this project to
  * implement neural networks on embedded systems (ex.: Arduino) or run
  * smaller networks on your computer.
  *
- * Made by Tam√°s Imets
+ * Made by Tam·s Imets
  * Date: 18th of November, 2018
  * Version: 0.1
  * Github: https://github.com/Imetomi
@@ -14,9 +17,6 @@
  *
  */
 
-#ifndef NEURAL_NETWORK_IN_C_PERCEPTRON_H
-#define NEURAL_NETWORK_IN_C_PERCEPTRON_H
-
 
 #include <math.h>
 #include <stdio.h>
@@ -25,7 +25,6 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include "debugmalloc.h"
 #include <SDL2/SDL.h> //Remove these if you don't want to use SDL
 #include <SDL2/SDL2_gfxPrimitives.h> //Remove these if you don't want to use SDL
 
@@ -73,15 +72,12 @@ void fill_zero(float *v, int n); /* Fills an array with zeros */
 void fill_one(float *v, int n); /* Fills an array with ones*/
 void standard_scaler(float **v, Dim dim); /* Standardization - Feature scaling */
 void minmax_scaler(float **v, Dim dim); /* Min max Feature Scaling */
-/* Reads data from a CSV */
-void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, float **y_test, Dim train_dim, Dim test_dim);
+void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, float **y_test, Dim train_dim, Dim test_dim); /* Reads data from a CSV */
 void create_clusters(float **X, float **y, int n); /* Creates linearly separable datasets for training */
 void create_circles(float **X, float **y, int n); /* Creates two circle datasets */
 void create_spiral(float **X, float **y, int n); /* Creates an Archimedean spiral */
 void create_chesstable(float **X, float **y, int n, float dist); /* Creates a chesstable pattern */
-/* Splits training and testing data */
-void split_train_test(float **X, float **y, float **X_train, float **X_test, float **y_train,
-                      float **y_test, Dim dim, float ratio);
+void split_train_test(float **X, float **y, float **X_train, float **X_test, float **y_train, float **y_test, Dim dim, float ratio); /* Splits training and testing data */
 float *get_row(float **v, int h, int idx);
 
 
@@ -92,8 +88,7 @@ Uint32 timer(Uint32 ms, void *param); /* Timer for SDL */
 void plot_init(SDL_Window **pwindow, SDL_Renderer **prenderer); /* Initialize SDL */
 void plot_error_scaled(struct SDL_Renderer *renderer, float *J, int step, Uint32 color);
 void plot_accuracy_scaled(struct SDL_Renderer *renderer, float *acc, int step, Uint32 color);
-/* Uses SDL2 to visualize a 2D dataset */
-void plot_clusters(struct SDL_Renderer *renderer, float **X, float **y, int output_dim);
+void plot_clusters(struct SDL_Renderer *renderer, float **X, float **y, int output_dim); /* Uses SDL2 to visualize a 2D dataset */
 void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann); /* Visualises trained net */
 
 
@@ -103,23 +98,9 @@ void add_hidden_layer(NeuralNet *ann, int layer_size); /* Inserts a hidden layer
 void print_net(NeuralNet *ann); /* Prints the weight matrices */
 void free_net(NeuralNet *ann); /* Free allocated memory */
 void feed_forward_net(NeuralNet *ann, float *X); /* Feeds forward information  */
-/* Trains network */
-void train_net(NeuralNet *ann, float **X, float **y, float *J, float* acc, Dim dim, int n_epoch);
-/* Validates network */
+void train_net(NeuralNet *ann, float **X, float **y, float *J, float* acc, Dim dim, float eta, int n_epoch);
 void test_net(NeuralNet *ann, float **X, float **y, Dim dim);
 
-#endif //NEURAL_NETWORK_IN_C_PERCEPTRON_H
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+#endif // PERCEPTRON_H_INCLUDED

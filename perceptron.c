@@ -9,6 +9,7 @@
  */
 
 #include "perceptron.h"
+#include "debugmalloc.h"
 
 
 /* Terminates program */
@@ -189,7 +190,7 @@ void minmax_scaler(float **v, Dim dim) {
     }
 }
 
-/* CSV Reader especially for this example */
+/* CSV Reader especially for this example */ /*
 void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, float **y_test,
               Dim train_dim, Dim test_dim) {
     char line[200 + 1];
@@ -199,28 +200,39 @@ void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, floa
         char *p;
         for (p = strtok(line, ","), idx = -1; p && *p && idx < train_dim.w; p = strtok(NULL, ","), ++idx) {
             if (idx >= 0) { //the first column is not needed
-                X_train[cnt][idx] = (float) atof(p);
+                if (p != NULL)
+                    X_train[cnt][idx] = (float) atof(p);
+                else
+                    X_train[cnt][idx] = 0;
             }
         }
 
-        y_train[cnt][0] = (float) atof(p); //the last 'p' pointer contains the label!
-        ++cnt;
+        if (p != NULL) {
+            y_train[cnt][0] = (float) atof(p); //the last 'p' pointer contains the label!
+            ++cnt;
+        }
     }
 
-    /* Reading in the testing datasets */
+    Reading in the testing datasets
     cnt = 0;
     while ((fgets(line, 1000, file) != NULL) && (cnt < test_dim.h)) {
         int idx;
         char *p;
         for (p = strtok(line, ","), idx = -1; p && *p && idx < test_dim.w; p = strtok(NULL, ","), ++idx) {
             if (idx >= 0) { //the first column is not needed
-                X_test[cnt][idx] = (float) atof(p);
+                if (p != NULL)
+                    X_test[cnt][idx] = (float) atof(p);
+                else
+                    X_test[cnt][idx] = 0;
             }
         }
-        y_test[cnt][0] = (float) atof(p); //the last 'p' pointer contains the label!
-        ++cnt;
+        if (p != NULL) {
+            y_test[cnt][0] = (float) atof(p); //the last 'p' pointer contains the label!
+            ++cnt;
+        } //the last 'p' pointer contains the label!
     }
 }
+*/
 
 /* Creates linearly separable datasets for training */
 void create_clusters(float **X, float **y, int n) {
@@ -233,7 +245,7 @@ void create_clusters(float **X, float **y, int n) {
 
 
     float size = rand_float() * (float) 1.1 - rand_float();
-    while (size <= 0.3 || size >= 0.35) size = rand_float() * 1.1 - rand_float();
+    while (size <= 0.3 || size >= 0.35) size = rand_float() * (float) 1.1 - rand_float();
 
     int ok = 0;
     while (ok < n) {
@@ -319,7 +331,7 @@ void create_spiral(float **X, float **y, int n) {
     }
 }
 
-void create_checktable(float **X, float **y, int n, float dist) {
+void create_chesstable(float **X, float **y, int n, float dist) {
     int ok = 0;
     int class = rand() % 2;
 

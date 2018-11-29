@@ -6,13 +6,14 @@
  *
  * Made by Tamás Imets
  * Date: 18th of November, 2018
- * Version: 0.1
+ * Version: 0.1v
  * Github: https://github.com/Imetomi
  *
  */
 
 
 #include "perceptron.h"
+#include "debugmalloc.h"
 
 
 /* Prints the weight matrices in a neural net */
@@ -96,7 +97,7 @@ NeuralNet *create_net(Dim in, Dim out) {
 }
 
 
-/* Adds a new layer to the neural nerwork */
+/* Adds a new layer to the neural nerwork */ /*
 void add_hidden_layer(NeuralNet *ann, int layer_size) {
     Layer *new = (Layer*) malloc(sizeof(Layer));
     ann->input->dim.w = layer_size;
@@ -129,6 +130,7 @@ void add_hidden_layer(NeuralNet *ann, int layer_size) {
     ann->input->next = new;
     ann->input->next->prev = new;
 }
+ */
 
 
 /* Feeds forward data in the neural network*/
@@ -153,7 +155,7 @@ void feed_forward_net(NeuralNet *ann, float *X) {
 
 
 /* Trains the neural network  */
-void train_net(NeuralNet *ann, float **X, float **y, float *J, float *acc, Dim dim, float eta, int n_epoch) {
+void train_net(NeuralNet *ann, float **X, float **y, float *J, float *acc, Dim dim, int n_epoch) {
     float *delta_second_layer = allocate_float_1d(ann->output->dim.h);
     clock_t start, end;
     start = clock();
@@ -202,6 +204,7 @@ void train_net(NeuralNet *ann, float **X, float **y, float *J, float *acc, Dim d
     float training_time = (float) (end-start) / CLOCKS_PER_SEC;
     printf("Training took: %0.3f sec\n", training_time);
 }
+
 
 /* Testing accuracy on the given neural network  */
 void test_net(NeuralNet *ann, float **X, float **y, Dim dim) {

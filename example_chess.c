@@ -1,15 +1,14 @@
 /*
- * Description: Example code that creates an Archimedean spiral
- * dataset and classifies them using a two layer neural network.
- * The first layer contains 8 units, the second constains 6 units
- * and there is an output neuron in the last layer.
+ * Description: Example code that creates a chesstable dataset for
+ * classification. Trains a two layer neural network on it and makes
+ * a visualisation using SDL2.
  *
  * Made by Tamás Imets
  * Date: 18th of November, 2018
  * Version: 0.1
  * Github: https://github.com/Imetomi
  *
- */
+ * */
 
 #include "perceptron.h"
 #include "debugmalloc.h"
@@ -21,27 +20,30 @@ int main(int argc, char **argv) {
     SDL_Window *window;
 
     /* Declaring variables */
-    Dim dim = {500, 8};
+    Dim dim = {500, 3};
     float **X, **y, *J, *acc, eta = 0.09;
-    int n_epoch = 500;
+    int n_epoch = 801;
+    float chesstable_distance = 0.02;
     clock_t start, end;
 
     /* Defining first and second weight matrix dimensions */
-    Dim in = {8, 6};
-    Dim out = {6, 1};
+    Dim in = {3, 5};
+    Dim out = {5, 1};
+
 
     /* Creating a dataset */
     X = allocate_float_2d(dim.h, dim.w);
     y = allocate_float_2d(dim.h, out.w);
     J = allocate_float_1d(n_epoch);
     acc = allocate_float_1d(n_epoch);
-    create_spiral(X, y, dim.h);
+    create_chesstable(X, y, dim.h, chesstable_distance);
 
 
     /* Creating the neural network */
     NeuralNet *ann;
     ann = create_net(in, out);
 
+    plot_init(&window, &renderer);
 
     /* Train the network */
     start = clock();
@@ -51,7 +53,6 @@ int main(int argc, char **argv) {
 
 
     /* Visualizing data */
-    plot_init(&window, &renderer);
     plot_clusters(renderer, X, y, dim.h);
     plot_error_scaled(renderer, J, n_epoch - 1, 0x000000FF);
     plot_accuracy_scaled(renderer, acc, n_epoch - 1, 0x000000FF);

@@ -5,7 +5,7 @@
  *
  * Made by Tamás Imets
  * Date: 18th of November, 2018
- * Version: 0.1
+ * Version: 0.1.1
  * Github: https://github.com/Imetomi
  *
  * Important Note: If you don't want to use SDL at all then you can remove this file.
@@ -14,7 +14,7 @@
  */
 
 #include "perceptron.h"
-
+#include "debugmalloc.h"
 
 const float Height = 600.0, Width = 1200.0, Margin = 30;
 
@@ -78,23 +78,50 @@ void plot_clusters(struct SDL_Renderer *renderer, float **X, float **y, int outp
 
 
 
-/* Able to visualize every function generated class */
+/* Able to visualize every function generated class */ /*
 void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann) {
     float step_i = (float) 1 / (Width / 2);
     float step_j = (float) 1 / Height;
     float z = 0.5;
 
-    for (float i = Margin / (Width / 2); i <= 1 - Margin / (Width / 2); i += step_i) {
-        for (float j = Margin / Height; j <= 1 - Margin / (Width / 2); j += step_j) {
+    // Float loop corrected with Machine Epsilon
+    for (float i = Margin / (Width / 2); i < 1 - Margin / (Width / 2) + MACHINE_EPSILON; i += step_i) {
+        for (float j = Margin / Height; j < 1 - Margin / (Width / 2) + MACHINE_EPSILON; j += step_j) {
             float pixel[8] = {1, i, j, (float) sin(i * 10), (float) sin(j * 10), i * j, i * i, j * j};
             feed_forward_net(ann, pixel);
             float res = ann->output->out[0];
             if (res >= z) {
                 pixelRGBA(renderer, (Sint16) ((Width / 2) * pixel[1]), (Sint16) (Height * pixel[2]),
-                        130, 0, 120, (Uint8) ((res - 0.5) * 255));
+                          130, 0, 120, (Uint8) ((res - 0.5) * 255));
             } else {
                 pixelRGBA(renderer, (Sint16) ((Width / 2) * pixel[1]), (Sint16) (Height * pixel[2]),
-                        255, 194, 0, (Uint8) ((0.5 - res) * 255));
+                          255, 194, 0, (Uint8) ((0.5 - res) * 255));
+            }
+        }
+    }
+}
+ */
+
+void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann) {
+    float z = 0.5;
+    float size = 540.0;
+
+    // Float loop corrected with Machine Epsilon
+    float i, j;
+    for (int x = (int) Margin - 1; x < Height - Margin ; ++x) {
+        for (int y = (int) Margin - 1; y < Height - Margin; ++y) {
+            i =((float) x - Margin)/ size;
+            j = ((float) y - Margin) / size;
+
+            float pixel[8] = {1, i, j, (float) sin(i * 10), (float) sin(j * 10), i * j, i * i, j * j};
+            feed_forward_net(ann, pixel);
+            float res = ann->output->out[0];
+            if (res >= z) {
+                pixelRGBA(renderer, (Sint16) y, (Sint16) x,
+                          130, 0, 120, (Uint8) ((res - 0.5) * 255));
+            } else {
+                pixelRGBA(renderer, (Sint16) y, (Sint16) x,
+                          255, 194, 0, (Uint8) ((0.5 - res) * 255));
             }
         }
     }

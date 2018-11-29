@@ -11,7 +11,7 @@
  */
 
 #include "perceptron.h"
-
+#include "debugmalloc.h"
 
 int main(int argc, char **argv) {
     srand(time(NULL));
@@ -19,8 +19,8 @@ int main(int argc, char **argv) {
     SDL_Window *window;
 
     Dim dim = {500, 3};
-    float **X, **y, *J, *acc, eta = 0.05;
-    int n_epoch = 101;
+    float **X, **y, *J, *acc;
+    int n_epoch = 150;
     clock_t start, end;
 
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 
     /* Train the network */
     start = clock();
-    train_net(ann, X, y, J, acc, dim, eta, n_epoch);
+    train_net(ann, X, y, J, acc, dim, n_epoch);
     end = clock();
     float cpu_time_used = (float) (end - start) / CLOCKS_PER_SEC;
 
@@ -81,5 +81,6 @@ int main(int argc, char **argv) {
     free_float_2d(X, dim.h);
 
     /* Terminate program */
+    debugmalloc_dump();
     return 0;
 }

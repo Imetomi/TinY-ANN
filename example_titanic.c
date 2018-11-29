@@ -21,6 +21,7 @@
  */
 
 #include "perceptron.h"
+#include "debugmalloc.h"
 
 
 int main(int argc, char **argv) {
@@ -36,8 +37,10 @@ int main(int argc, char **argv) {
 
     /* Reading in the training dataset !!!CHANGE PATH!!! */
     /* The data was already cleaned and scaled in python */
-    FILE* titanic_data = fopen("C:\\Users\\imets\\Projects\\Neural Network in C\\data\\titanic_data.csv", "r");
-    read_csv(titanic_data, X_train, X_test, y_train, y_test, train_dim, test_dim);
+
+    //FILE* titanic_data = fopen("C:\\Users\\imets\\Projects\\Neural Network in C\\data\\titanic_data.csv", "r");
+    /* READING FROM STANDARD INPUT */
+    read_csv(stdin, X_train, X_test, y_train, y_test, train_dim, test_dim);
 
     /* Scaling the data */
     standard_scaler(X_train, train_dim);
@@ -70,5 +73,6 @@ int main(int argc, char **argv) {
     free_float_2d(y_test, test_dim.h);
     free_net(ann);
 
+    debugmalloc_dump();
     return 0;
 }
