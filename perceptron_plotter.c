@@ -14,7 +14,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
 
 const float Height = 600.0, Width = 1200.0, Margin = 30;
 
@@ -77,31 +76,6 @@ void plot_clusters(struct SDL_Renderer *renderer, float **X, float **y, int outp
 }
 
 
-
-/* Able to visualize every function generated class */ /*
-void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann) {
-    float step_i = (float) 1 / (Width / 2);
-    float step_j = (float) 1 / Height;
-    float z = 0.5;
-
-    // Float loop corrected with Machine Epsilon
-    for (float i = Margin / (Width / 2); i < 1 - Margin / (Width / 2) + MACHINE_EPSILON; i += step_i) {
-        for (float j = Margin / Height; j < 1 - Margin / (Width / 2) + MACHINE_EPSILON; j += step_j) {
-            float pixel[8] = {1, i, j, (float) sin(i * 10), (float) sin(j * 10), i * j, i * i, j * j};
-            feed_forward_net(ann, pixel);
-            float res = ann->output->out[0];
-            if (res >= z) {
-                pixelRGBA(renderer, (Sint16) ((Width / 2) * pixel[1]), (Sint16) (Height * pixel[2]),
-                          130, 0, 120, (Uint8) ((res - 0.5) * 255));
-            } else {
-                pixelRGBA(renderer, (Sint16) ((Width / 2) * pixel[1]), (Sint16) (Height * pixel[2]),
-                          255, 194, 0, (Uint8) ((0.5 - res) * 255));
-            }
-        }
-    }
-}
- */
-
 void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann) {
     float z = 0.5;
     float size = 540.0;
@@ -117,10 +91,10 @@ void plot_trained_net(struct SDL_Renderer *renderer, NeuralNet *ann) {
             feed_forward_net(ann, pixel);
             float res = ann->output->out[0];
             if (res >= z) {
-                pixelRGBA(renderer, (Sint16) y, (Sint16) x,
+                pixelRGBA(renderer, (Sint16) x, (Sint16) y,
                           130, 0, 120, (Uint8) ((res - 0.5) * 255));
             } else {
-                pixelRGBA(renderer, (Sint16) y, (Sint16) x,
+                pixelRGBA(renderer, (Sint16) x, (Sint16) y,
                           255, 194, 0, (Uint8) ((0.5 - res) * 255));
             }
         }

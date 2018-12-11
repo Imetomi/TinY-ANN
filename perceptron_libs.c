@@ -13,8 +13,6 @@
 
 
 #include "perceptron.h"
-#include "debugmalloc.h"
-
 
 /* Prints the weight matrices in a neural net */
 void print_net(NeuralNet *ann) {

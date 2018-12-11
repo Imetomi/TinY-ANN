@@ -25,7 +25,6 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include "debugmalloc.h"
 #include <SDL2/SDL.h> //Remove these if you don't want to use SDL
 #include <SDL2/SDL2_gfxPrimitives.h> //Remove these if you don't want to use SDL
 

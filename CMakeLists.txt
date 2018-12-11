@@ -14,7 +14,7 @@ add_definitions("-g")
 
 
 add_executable(Neural_Network_in_C perceptron.h perceptron.c perceptron_libs.c perceptron_plotter.c
-               example_circle.c debugmalloc.h debugmalloc.c)
+               example_spiral.c debugmalloc.h debugmalloc.c)
 target_link_libraries(Neural_Network_in_C -lmingw32 -lSDL2main -lSDL2 -lSDL2_gfx -lSDL2_ttf -lSDL2_image -lSDL2_mixer
                 -static-libgcc)
 

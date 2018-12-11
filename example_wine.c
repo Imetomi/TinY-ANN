@@ -32,8 +32,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
-
 
 int main(int argc, char **argv) {
     /* Creating datasets and reading the data */
@@ -43,7 +41,7 @@ int main(int argc, char **argv) {
 
     /* Reading in the training dataset !!!CHANGE PATH!!! */
     /* The data was already cleaned and scaled in python */
-    //FILE* wine_data = fopen("C:\\Users\\imets\\Projects\\Neural Network in C\\data\\wine_data.csv", "r");
+    FILE* wine_data = fopen("C:\\YOUR_PATH_HERE\\data\\wine_data.csv", "r");
     /* READING FROM STANDARD INPUT */
 
     /* Reading the data */
@@ -51,7 +49,7 @@ int main(int argc, char **argv) {
     X_test = allocate_float_2d(test_dim.h, test_dim.w);
     y_train = allocate_float_2d(train_dim.h, 1);
     y_test = allocate_float_2d(test_dim.h, 1);
-    read_csv(stdin, X_train, X_test, y_train, y_test, train_dim, test_dim);
+    read_csv(wine_data, X_train, X_test, y_train, y_test, train_dim, test_dim);
 
     /* Good wines are rated above 5 :) */
     for (int i = 0; i < train_dim.h; ++i)
@@ -68,7 +66,7 @@ int main(int argc, char **argv) {
 
     /* Creating neural network */
     int n_epoch = 251;
-    float eta = 0.05, *J, *acc;
+    float *J, *acc;
     J = allocate_float_1d(n_epoch);
     acc = allocate_float_1d(n_epoch);
     Dim in = {11, 6};
@@ -77,7 +75,7 @@ int main(int argc, char **argv) {
     feed_forward_net(ann, X_train[0]);
 
     /* Training network on the training samples */
-    train_net(ann, X_train, y_train, J, acc, train_dim, eta, n_epoch);
+    train_net(ann, X_train, y_train, J, acc, train_dim, n_epoch);
 
 
     /* Testing accuracy on the testing samples */
@@ -93,6 +91,5 @@ int main(int argc, char **argv) {
     free_float_2d(y_test, test_dim.h);
     free_net(ann);
 
-    debugmalloc_dump();
     return 0;
 }

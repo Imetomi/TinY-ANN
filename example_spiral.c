@@ -12,7 +12,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
 
 
 int main(int argc, char **argv) {
@@ -22,7 +21,7 @@ int main(int argc, char **argv) {
 
     /* Declaring variables */
     Dim dim = {500, 8};
-    float **X, **y, *J, *acc, eta = 0.09;
+    float **X, **y, *J, *acc;
     int n_epoch = 500;
     clock_t start, end;
 
@@ -45,7 +44,7 @@ int main(int argc, char **argv) {
 
     /* Train the network */
     start = clock();
-    train_net(ann, X, y, J, acc, dim, eta, n_epoch);
+    train_net(ann, X, y, J, acc, dim, n_epoch);
     end = clock();
     float cpu_time_used = (float) (end - start) / CLOCKS_PER_SEC;
 
@@ -83,6 +82,5 @@ int main(int argc, char **argv) {
 
 
     /* Terminate program */
-    debugmalloc_dump();
     return 0;
 }

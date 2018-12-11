@@ -1,5 +1,5 @@
 /*
- * Description: Example code that creates a checktable dataset for
+ * Description: Example code that creates a chesstable dataset for
  * classification. Trains a two layer neural network on it and makes
  * a visualisation using SDL2.
  *

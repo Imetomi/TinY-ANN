@@ -9,8 +9,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
-
 
 /* Terminates program */
 void end() {
@@ -190,7 +188,7 @@ void minmax_scaler(float **v, Dim dim) {
     }
 }
 
-/* CSV Reader especially for this example */ /*
+/* CSV Reader especially for this example */
 void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, float **y_test,
               Dim train_dim, Dim test_dim) {
     char line[200 + 1];
@@ -213,7 +211,7 @@ void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, floa
         }
     }
 
-    Reading in the testing datasets
+    // Reading in the testing datasets
     cnt = 0;
     while ((fgets(line, 1000, file) != NULL) && (cnt < test_dim.h)) {
         int idx;
@@ -232,7 +230,7 @@ void read_csv(FILE *file, float **X_train, float **X_test, float **y_train, floa
         } //the last 'p' pointer contains the label!
     }
 }
-*/
+
 
 /* Creates linearly separable datasets for training */
 void create_clusters(float **X, float **y, int n) {

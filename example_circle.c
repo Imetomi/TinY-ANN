@@ -11,7 +11,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
 
 int main(int argc, char **argv) {
     srand(time(NULL));
@@ -81,6 +80,5 @@ int main(int argc, char **argv) {
     free_float_2d(X, dim.h);
 
     /* Terminate program */
-    debugmalloc_dump();
     return 0;
 }

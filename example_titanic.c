@@ -21,7 +21,6 @@
  */
 
 #include "perceptron.h"
-#include "debugmalloc.h"
 
 
 int main(int argc, char **argv) {
@@ -38,9 +37,9 @@ int main(int argc, char **argv) {
     /* Reading in the training dataset !!!CHANGE PATH!!! */
     /* The data was already cleaned and scaled in python */
 
-    //FILE* titanic_data = fopen("C:\\Users\\imets\\Projects\\Neural Network in C\\data\\titanic_data.csv", "r");
+    FILE* titanic_data = fopen("C:\\YOUR_PATH_HERE\\data\\titanic_data.csv", "r");
     /* READING FROM STANDARD INPUT */
-    read_csv(stdin, X_train, X_test, y_train, y_test, train_dim, test_dim);
+    read_csv(titanic_data, X_train, X_test, y_train, y_test, train_dim, test_dim);
 
     /* Scaling the data */
     standard_scaler(X_train, train_dim);
@@ -49,7 +48,7 @@ int main(int argc, char **argv) {
 
     /* Creating neural network */
     int n_epoch = 401;
-    float eta = 0.09, *J, *acc;
+    float *J, *acc;
     J = allocate_float_1d(n_epoch);
     acc = allocate_float_1d(n_epoch);
     Dim in = {17, 4};
@@ -58,7 +57,7 @@ int main(int argc, char **argv) {
 
 
     /* Training network on the training samples */
-    train_net(ann, X_train, y_train, J, acc, train_dim, eta, n_epoch);
+    train_net(ann, X_train, y_train, J, acc, train_dim, n_epoch);
 
     /* Testing accuracy on the testing samples */
     test_net(ann, X_test, y_test, test_dim);
@@ -73,6 +72,5 @@ int main(int argc, char **argv) {
     free_float_2d(y_test, test_dim.h);
     free_net(ann);
 
-    debugmalloc_dump();
     return 0;
 }
